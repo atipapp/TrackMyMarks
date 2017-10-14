@@ -4,9 +4,9 @@ GET  /login
 	-noauthMW	
 POST /login
 	-noauthMW	
-GET  /regisztracio
+GET  /registration
 	-noauthMW	
-POST /regisztracio
+POST /registration
 	-noauthMW
 	-saveProfileMW	
 GET  /pwdreminder

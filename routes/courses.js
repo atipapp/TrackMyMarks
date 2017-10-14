@@ -1,9 +1,5 @@
 module.exports = function (app){
-    var authMW = function () {
-        return function (req, res, next) {
-            return next();
-        }
-    }
+    var authMW = require('../middleware/generic/authMW');
     var renderMW = require('../middleware/generic/render');
     var getCourseMW = require('../middleware/course/getCourseMW');
     var saveCourseMW = require('../middleware/course/saveCourseMW');

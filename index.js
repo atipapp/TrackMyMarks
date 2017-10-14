@@ -16,7 +16,8 @@ app.use(function (req, res, next) {
 /**
  * Include all the routes
  */
-require('./routes/courses')(app);
+//require('./routes/courses')(app);
+require('./routes/outside')(app);
 
 //Use the static MW
 //app.use(express.static('static'));
