@@ -45,10 +45,13 @@ GET  /courses					//Összes tárgy főoldal
 POST /courses					//Új tárgy felvétele esetén POST
 	-authMW	
 	-saveCourseMW
+GET  /marks/edit/id		//1 adott jegy adatainak szerkesztése
 	-authMW
 	-getMarkMW
+POST /marks/edit/id		//1 adott jegy adatinak elmentése
 	-authMW	
 	-saveMarkMW
+GET  /marks/delete/id			//1 adott jegy törlése
 	-authMW
 	-deleteMarkMW
 

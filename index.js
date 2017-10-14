@@ -18,7 +18,8 @@ app.use(function (req, res, next) {
  */
 //require('./routes/courses')(app);
 //require('./routes/outside')(app);
-require('./routes/marks')(app);
+//require('./routes/marks')(app);
+require('./routes/user')(app);
 
 //Use the static MW
 //app.use(express.static('static'));
