@@ -1,12 +1,12 @@
 module.exports = function (app){
-    var authMW = require('../middleware/generic/authMW');
-    var renderMW = require('../middleware/generic/render');
-    var getCourseMW = require('../middleware/course/getCourseMW');
-    var saveCourseMW = require('../middleware/course/saveCourseMW');
-    var deleteCourseMW = require('../middleware/course/deleteCourseMW');
-    var getAllCoursesMW = require('../middleware/course/getAllCoursesMW');
-    var getAllMarkMW = require('../middleware/marks/getAllMarksMW');
-    var saveMarkMW = require('../middleware/marks/saveMarkMW');
+    var authMW = require('../middlewares/generic/authMW');
+    var renderMW = require('../middlewares/generic/render');
+    var getCourseMW = require('../middlewares/course/getCourseMW');
+    var saveCourseMW = require('../middlewares/course/saveCourseMW');
+    var deleteCourseMW = require('../middlewares/course/deleteCourseMW');
+    var getAllCoursesMW = require('../middlewares/course/getAllCoursesMW');
+    var getAllMarkMW = require('../middlewares/marks/getAllMarksMW');
+    var saveMarkMW = require('../middlewares/marks/saveMarkMW');
 
     var objrep = {};
 

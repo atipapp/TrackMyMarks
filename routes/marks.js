@@ -1,9 +1,9 @@
 module.exports = function (app){
-    var authMW = require('../middleware/generic/authMW');
-    var renderMW = require('../middleware/generic/render');
-    var getMarkMW = require('../middleware/marks/getMarkMW');
-    var saveMarkMW = require('../middleware/marks/saveMarkMW');
-    var deleteMarkMW = require('../middleware/marks/deleteMarkMW');
+    var authMW = require('../middlewares/generic/authMW');
+    var renderMW = require('../middlewares/generic/render');
+    var getMarkMW = require('../middlewares/marks/getMarkMW');
+    var saveMarkMW = require('../middlewares/marks/saveMarkMW');
+    var deleteMarkMW = require('../middlewares/marks/deleteMarkMW');
 
     var objrep = {};
 

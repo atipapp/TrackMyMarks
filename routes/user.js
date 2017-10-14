@@ -1,9 +1,9 @@
 module.exports = function (app){
-    var authMW = require('../middleware/generic/authMW');
-    var renderMW = require('../middleware/generic/render');
-    var getUserByIdMW = require('../middleware/user/getUserByIdMW');
-    var saveUserByIdMW = require('../middleware/user/saveUserByIdMW');
-    var logoutMW = require('../middleware/user/logoutMW');
+    var authMW = require('../middlewares/generic/authMW');
+    var renderMW = require('../middlewares/generic/render');
+    var getUserByIdMW = require('../middlewares/user/getUserByIdMW');
+    var saveUserByIdMW = require('../middlewares/user/saveUserByIdMW');
+    var logoutMW = require('../middlewares/user/logoutMW');
 
     var objrep = {};
 

@@ -1,9 +1,9 @@
-var mainRedirectMW = require('../middleware/generic/mainRedirectMW');
-var inverseAuthMW = require('../middleware/generic/inverseAuthMW');
-var checkUserLoginMW = require('../middleware/user/checkUserLoginMW');
-var checkUserRegistrationMW = require('../middleware/user/checkUserRegistrationMW');
-var renderMW = require('../middleware/generic/render');
-var saveUserByIdMW = require('../middleware/user/saveUserByIdMW');
+var mainRedirectMW = require('../middlewares/generic/mainRedirectMW');
+var inverseAuthMW = require('../middlewares/generic/inverseAuthMW');
+var checkUserLoginMW = require('../middlewares/user/checkUserLoginMW');
+var checkUserRegistrationMW = require('../middlewares/user/checkUserRegistrationMW');
+var renderMW = require('../middlewares/generic/render');
+var saveUserByIdMW = require('../middlewares/user/saveUserByIdMW');
 
 
 //var userModel = require('../models/user');
