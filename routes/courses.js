@@ -5,7 +5,7 @@ module.exports = function (app){
     var saveCourseMW = require('../middleware/course/saveCourseMW');
     var deleteCourseMW = require('../middleware/course/deleteCourseMW');
     var getAllCoursesMW = require('../middleware/course/getAllCoursesMW');
-    var getAllMarkMW = require('../middleware/marks/getAllMarkMW');
+    var getAllMarkMW = require('../middleware/marks/getAllMarksMW');
 
     var objrep = {};
 

@@ -8,6 +8,7 @@
 module.exports = function (objectrepository) {
 
     return function (req, res, next) {
+        console.log('getMarkMW');
         return next();
     };
 

@@ -8,6 +8,7 @@ module.exports = function (objectrepository, viewName) {
     //var db = requireoption(objectrepository,'db');
 
     return function (req, res, next) {
+        console.log('render');
         res.end('Render: ' + viewName);
         //res.render(viewName, res.tpl);
     };

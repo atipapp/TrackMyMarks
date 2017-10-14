@@ -9,6 +9,7 @@ module.exports = function (objectrepository) {
     //var targyModel = requireOption(objectrepository, 'taskModel');
 
     return function (req, res, next) {
+        console.log('getAllCoursesMW');
         return next();
     };
 

@@ -6,6 +6,7 @@
  */
 module.exports = function (objectrepository) {
     return function (req, res, next) {
+        console.log('getAllMarksMW');
         return next();
     };
 
