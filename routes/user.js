@@ -20,8 +20,4 @@ module.exports = function (app){
         authMW(objrep),
         logoutMW(objrep),
         renderMW(objrep,'logout'));
-
-    app.use('/', function (req, res, next) {
-        res.end("itt");
-    });
 };

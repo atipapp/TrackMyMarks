@@ -40,8 +40,4 @@ module.exports = function (app){
     app.post('/courses/',
         authMW(objrep),
         saveCourseMW(objrep));
-
-    app.use('/', function (req, res, next) {
-        res.end("itt");
-    });
 };

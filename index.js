@@ -16,10 +16,16 @@ app.use(function (req, res, next) {
 /**
  * Include all the routes
  */
-//require('./routes/courses')(app);
-//require('./routes/outside')(app);
-//require('./routes/marks')(app);
+
+require('./routes/courses')(app);
+require('./routes/outside')(app);
+require('./routes/marks')(app);
 require('./routes/user')(app);
+
+app.use('/', function (req, res, next) {
+    res.end("Erre nincs render. A bejart MW-ek megtalalhatok a consoleban.");
+    next();
+});
 
 //Use the static MW
 //app.use(express.static('static'));
@@ -33,12 +39,6 @@ app.use(function (err, req, res, next) {
   //Flush out the stack to the console
   console.error(err.stack);
 });
-
-/*
-app.use('/',function(req, res, next){
-	next();
-});*/
-
 
 var server = app.listen(3000, function () {
 	console.log("http://localhost:3000/");

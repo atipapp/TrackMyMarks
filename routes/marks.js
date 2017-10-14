@@ -19,8 +19,4 @@ module.exports = function (app){
     app.get('/marks/delete/id',
         authMW(objrep),
         deleteMarkMW(objrep));
-
-    app.use('/', function (req, res, next) {
-        res.end("itt");
-    });
 };
