@@ -5,12 +5,14 @@ module.exports = function (app){
     var saveCourseMW = require('../middleware/course/saveCourseMW');
     var deleteCourseMW = require('../middleware/course/deleteCourseMW');
     var getAllCoursesMW = require('../middleware/course/getAllCoursesMW');
+    var getAllMarkMW = require('../middleware/mark/getAllMarkMW');
 
     var objrep = {};
 
     app.get('/courses/details/id',
         authMW(objrep),
         getCourseMW(objrep),
+        getAllMarkMW(objrep),
         renderMW(objrep,'coursedetails'));
 
     app.post('/courses/details/id',
