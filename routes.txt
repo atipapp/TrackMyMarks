@@ -26,6 +26,7 @@ POST /profil					//Módosítások elküldése
 GET  /courses/details/id		//1 adott tárgy részletes nézet
 	-authMW
 	-getCourseMW
+	-getAllMarkMW
 POST /courses/details/id		//Új jegy felvétele esetén elküldés
 	-authMW	
 	-saveCourseMW
@@ -44,13 +45,10 @@ GET  /courses					//Összes tárgy főoldal
 POST /courses					//Új tárgy felvétele esetén POST
 	-authMW	
 	-saveCourseMW
-GET  /jegy/id/edit		//1 adott jegy adatainak szerkesztése
 	-authMW
-	-getJegyMW
-POST /jegy/id/edit		//1 adott jegy adatinak elmentése
+	-getMarkMW
 	-authMW	
-	-saveJegyMW
-GET  /jegy/id/delete			//1 adott jegy törlése
+	-saveMarkMW
 	-authMW
 	-deleteMarkMW
 
@@ -63,9 +61,9 @@ MW lista:
 - getCourseMW: 1 darab tárgy lekérdezése
 - saveCourseMW: create or update formból jövő paraméterek -> targyak
 - deleteCourseMW: tárgy törlése
-- getAllJegyMW: 1 tárgy jegyeinek lekérése
-- getJegyMW: 1 adott jegy lekérése
-- saveJegyMW: create or update 1 adott jegy
+- getAllMarkMW: 1 tárgy jegyeinek lekérése
+- getMarkMW: 1 adott jegy lekérése
+- saveMarkMW: create or update 1 adott jegy
 - deleteMarkMW: jegy törlése
 - getProfileMW: user profilja
 - saveProfileMW: user profiljának mentése vagy létrehozása
