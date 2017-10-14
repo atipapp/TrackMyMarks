@@ -1,0 +1,71 @@
+
+//Ha nincs bejelentkezve, ok, különben átirányítom /targyak
+GET  /login
+	-noauthMW	
+POST /login
+	-noauthMW	
+GET  /regisztracio
+	-noauthMW	
+POST /regisztracio
+	-noauthMW
+	-saveProfileMW	
+GET  /pwdreminder
+	-noauthMW	
+POST /pwdreminder
+	-noauthMW	
+
+//Ha be van jelentkezve, ok, különben átirányítom /login
+GET  /logout
+	-authMW	
+	-logoutMW
+GET  /targyak					//Összes tárgy főoldal
+	-authMW
+	-getAllTargyMw
+POST /targyak					//Új tárgy felvétele esetén POST
+	-authMW	
+	-saveTargyMW
+GET  /profil					//Profilom menüpont
+	-authMW
+POST /profil					//Módosítások elküldése
+	-authMW
+	-saveProfileMW
+GET  /targyak/reszletek/id		//1 adott tárgy részletes nézet
+	-authMW
+	-getTargyMW
+POST /targyak/reszletek/id		//Új jegy felvétele esetén elküldés
+	-authMW	
+	-saveTargyMW
+GET  /targyak/szerkesztes/id	//1 adott tárgy adatainak szerkesztése
+	-authMW
+	-getTargyMW
+POST /targyak/szerkesztes/id	//1 adott tárgy változtatásainak elküldése
+	-authMW	
+	-saveTargyMW
+GET  /targyak/torles/id			//1 adott tárgy törlése
+	-authMW
+	-deleteTargyMW
+GET  /jegy/id/szerkesztes		//1 adott jegy adatainak szerkesztése
+	-authMW
+	-getJegyMW
+POST /jegy/id/szerkesztes		//1 adott jegy adatinak elmentése
+	-authMW	
+	-saveJegyMW
+GET  /jegy/id/torles			//1 adott jegy törlése
+	-authMW
+	-deleteJegyMW
+
+MW lista:
+- authMW: ha nincs belépve user, akkor redirect /login
+- noauthMW: ha be van lépve a user, akkor redirect /targyak
+- getAllTargyMW: összes tárgy kinyerése
+- checkPWMW: megnézi, hogy asdasd-e a jelszó, ha igen belépetet, ha nem vissza
+- logoutMW: megszűnteti a sessiont
+- getTargyMW: 1 darab tárgy lekérdezése
+- saveTargyMW: create or update formból jövő paraméterek -> targyak
+- deleteTargyMW: tárgy törlése
+- getAllJegyMW: 1 tárgy jegyeinek lekérése
+- getJegyMW: 1 adott jegy lekérése
+- saveJegyMW: create or update 1 adott jegy
+- deleteJegyMW: jegy törlése
+- getProfileMW: user profilja
+- saveProfileMW: user profiljának mentése vagy létrehozása
