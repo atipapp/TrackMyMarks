@@ -2,7 +2,7 @@
 
 /**
  * Save the course for the courseid param
- *  - if there is no such course, redirect to /courses
+ *  - if there is no such course, create it
  *  - if there is one, save it
  */
 module.exports = function (objectrepository) {

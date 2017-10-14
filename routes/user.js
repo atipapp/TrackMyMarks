@@ -7,15 +7,24 @@ module.exports = function (app){
 
     var objrep = {};
 
+    /**
+     * Get the user's profile data.
+     */
     app.get('/profile',
         authMW(objrep),
         getUserByIdMW(objrep),
         renderMW(objrep,'profile'));
 
+    /**
+     * Save the changes made on the profile.
+     */
     app.post('/profile',
         authMW(objrep),
         saveUserByIdMW(objrep));
 
+    /**
+     * Log the user out.
+     */
     app.get('/logout',
         authMW(objrep),
         logoutMW(objrep),

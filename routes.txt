@@ -1,3 +1,5 @@
+Ez elavult, hibákat tartalmazó vázlat.
+Érdemesebb a MW struktúrát kódból vizsgálni.
 
 //Ha nincs bejelentkezve, ok, különben átirányítom /courses
 GET  /login
@@ -18,9 +20,9 @@ POST /pwdreminder
 GET  /logout
 	-authMW	
 	-logoutMW
-GET  /profil					//Profilom menüpont
+GET  /profile					//Profilom menüpont
 	-authMW
-POST /profil					//Módosítások elküldése
+POST /profile					//Módosítások elküldése
 	-authMW
 	-saveProfileMW
 GET  /courses/details/id		//1 adott tárgy részletes nézet
@@ -29,7 +31,7 @@ GET  /courses/details/id		//1 adott tárgy részletes nézet
 	-getAllMarkMW
 POST /courses/details/id		//Új jegy felvétele esetén elküldés
 	-authMW	
-	-saveCourseMW
+	-saveMarkMWMW
 GET  /courses/edit/id	//1 adott tárgy adatainak szerkesztése
 	-authMW
 	-getCourseMW

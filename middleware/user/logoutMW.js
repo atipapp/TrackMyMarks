@@ -1,7 +1,7 @@
 //var requireOption = require('../common').requireOption;
 
 /**
- * Log out a user
+ * Log out the user
  * and remove it from res.tpl.user
  */
 module.exports = function (objectrepository) {

@@ -7,15 +7,24 @@ module.exports = function (app){
 
     var objrep = {};
 
+    /**
+     * Edit one given mark's parameters.
+     */
     app.get('/marks/edit/id',
         authMW(objrep),
         getMarkMW(objrep),
         renderMW(objrep,'markedit'));
 
+    /**
+     * Save the modified mark.
+     */
     app.post('/marks/edit/id',
         authMW(objrep),
         saveMarkMW(objrep));
 
+    /**
+     * Delete the mark by its id.
+     */
     app.get('/marks/delete/id',
         authMW(objrep),
         deleteMarkMW(objrep));
