@@ -1,6 +1,7 @@
 {
   "name": "trackmymarks",
-  "version": "1.0.0",
+  "version": "4.0.0",
+  "private": true,
   "description": "Szerver oldali JavaScript targy hazifeladata",
   "main": "index.js",
   "dependencies": {
