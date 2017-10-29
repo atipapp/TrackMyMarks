@@ -18,7 +18,16 @@ module.exports = function (app) {
      * Main page
      */
     app.get('/',
-        mainRedirectMW(objectRepository)
+        //mainRedirectMW(objectRepository),
+        renderMW(objectRepository, 'index')
+    );
+
+    /**
+     * Alternative main page
+     */
+    app.get('/index',
+        //mainRedirectMW(objectRepository),
+        renderMW(objectRepository, 'index')
     );
 
     /**
@@ -27,7 +36,7 @@ module.exports = function (app) {
     app.use('/login',
         inverseAuthMW(objectRepository),
         checkUserLoginMW(objectRepository),
-        renderMW(objectRepository, 'login')
+        renderMW(objectRepository, 'index')
     );
 
     /**
@@ -43,10 +52,10 @@ module.exports = function (app) {
     /**
      * PWD reminder
      */
-    app.use('/pwdreminder',
+    app.use('/forgottenpassword',
         inverseAuthMW(objectRepository),
         checkUserRegistrationMW(objectRepository),
-        renderMW(objectRepository, 'pwdreminder')
+        renderMW(objectRepository, 'forgottenpassword')
     );
 
 };

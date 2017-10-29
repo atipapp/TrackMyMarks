@@ -20,7 +20,8 @@ module.exports = function (app){
      */
     app.post('/profile',
         authMW(objrep),
-        saveUserByIdMW(objrep));
+        saveUserByIdMW(objrep),
+        renderMW(objrep,'profile'));
 
     /**
      * Log the user out.
@@ -28,5 +29,5 @@ module.exports = function (app){
     app.get('/logout',
         authMW(objrep),
         logoutMW(objrep),
-        renderMW(objrep,'logout'));
+        renderMW(objrep,'index'));
 };

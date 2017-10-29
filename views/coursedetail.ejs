@@ -1,0 +1,113 @@
+<%- include('header') %>
+<!-- start: content -->
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="display-1">Szerver oldali JavaScript</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-4">
+    <div class="container">
+        <h1 class="">Kurzus Adatok</h1>
+        <div class="row">
+            <div class="col-md-7">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Előadó</th>
+                        <th>Tárgyhonlap</th>
+                        <th>Átlag</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Paróczi Zsombor</td>
+                        <td>
+                            <a href="http://malna.tmit.bme.hu/vitmav42/vitmav42.md">http://malna.tmit.bme.hu/vitmav42/vitmav42.md</a>
+                        </td>
+                        <td>5</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="">Jegyeim</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Jegy</th>
+                        <th>Részletek</th>
+                        <th>Dátum</th>
+                        <th class="text-center">Szerkesztés</th>
+                        <th class="text-center">Törlés</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>5</td>
+                        <td>1. házi</td>
+                        <td> 2017. 09. 20.</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/marks/edit/id">Szerkesztés</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/marks/delete/id">Törlés</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>2. házi</td>
+                        <td> 2017. 10. 01.</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/marks/edit/id">Szerkesztés</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/marks/delete/id">Törlés</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>3. házi</td>
+                        <td> 2017. 10. 10.</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/marks/edit/id">Szerkesztés</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/marks/delete/id">Törlés</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="">Új jegy felvétele</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline" method="post" action="/courses/details/id">
+                    <div class="form-group"> <select class="form-control" id="sel1">
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select> </div>
+                    <input type="text" name="uj_jegy_reszletek" class="form-control p-2 m-2 w-25" placeholder="Részletek">
+                    <input type="text" name="uj_jegy_datum" class="form-control p-2 m-2" placeholder="Dátum">
+                    <button type="submit" class="btn btn-primary p-2 m-1">Hozzáadás</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: content -->
+<%- include('footer') %>

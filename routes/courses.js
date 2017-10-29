@@ -7,6 +7,7 @@ module.exports = function (app){
     var getAllCoursesMW = require('../middlewares/course/getAllCoursesMW');
     var getAllMarkMW = require('../middlewares/marks/getAllMarksMW');
     var saveMarkMW = require('../middlewares/marks/saveMarkMW');
+    var mainRedirectMW = require('../middlewares/generic/mainRedirectMW');
 
     var objrep = {};
 
@@ -17,14 +18,15 @@ module.exports = function (app){
         authMW(objrep),
         getCourseMW(objrep),
         getAllMarkMW(objrep),
-        renderMW(objrep,'coursedetails'));
+        renderMW(objrep,'coursedetail'));
 
     /**
      * Send back the newly created mark.
      */
     app.post('/courses/details/id',
         authMW(objrep),
-        saveMarkMW(objrep));
+        saveMarkMW(objrep),
+        renderMW(objrep,'coursedetail'));
 
     /**
      * Get course details for editing.
@@ -32,21 +34,23 @@ module.exports = function (app){
     app.get('/courses/edit/id',
         authMW(objrep),
         getCourseMW(objrep),
-        renderMW(objrep,'courseedit'));
+        renderMW(objrep,'editcourse'));
 
     /**
      * Send back the changes.
      */
     app.post('/courses/edit/id',
         authMW(objrep),
-        saveCourseMW(objrep));
+        saveCourseMW(objrep),
+        mainRedirectMW(objrep));
 
     /**
      * Delete a course by its id
      */
     app.get('/courses/delete/id',
         authMW(objrep),
-        deleteCourseMW(objrep));
+        deleteCourseMW(objrep),
+        mainRedirectMW(objrep));
 
     /**
      * List all courses
@@ -61,5 +65,6 @@ module.exports = function (app){
      */
     app.post('/courses/',
         authMW(objrep),
-        saveCourseMW(objrep));
+        saveCourseMW(objrep),
+        renderMW(objrep,'courses'));
 };

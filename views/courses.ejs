@@ -1,0 +1,86 @@
+<%- include('header') %>
+<!-- start: content -->
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="display-1">Üdv újra itt, pappa</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-4">
+    <div class="container">
+        <h1 class="">Tárgyaim</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Név</th>
+                        <th class="text-center">Átlag</th>
+                        <th class="text-center">Szerkesztés</th>
+                        <th class="text-center">Törlés</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href="/courses/details/id">Szerver oldali JavaScript</a>
+                        </td>
+                        <td class="text-center">5</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/courses/edit/id">Szerkesztés</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/courses/delete/id">Törlés</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/courses/details/id">Mesterséges intelligencia</a>
+                        </td>
+                        <td class="text-center">5</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/courses/edit/id">Szerkesztés</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/courses/delete/id">Törlés</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/courses/details/id">Mobil- és Webes szoftverek</a>
+                        </td>
+                        <td class="text-center">5</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/courses/edit/id">Szerkesztés</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/courses/delete/id">Törlés</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-4">
+    <div class="container">
+        <h1 class="">Új tárgy felvétele</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline" method="post" action="/courses">
+                    <input type="text" name="uj_targy" class="form-control p-2 w-25" placeholder="Név">
+                    <input type="text" name="uj_targy_honlap" class="form-control p-2 m-2 w-50" placeholder="Tárgyhonlap">
+                    <button type="submit" class="btn btn-primary p-2 m-2">Hozzáadás</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end: content -->
+<%- include('footer') %>
