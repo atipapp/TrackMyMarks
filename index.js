@@ -60,5 +60,9 @@ app.use(function (err, req, res, next) {
 });
 
 var server = app.listen(3000, function () {
-	console.log("http://localhost:3000/");
+	console.log("--------------------------");
+	console.log("|        Welcome!        |");
+	console.log("| The server:            |");
+	console.log("| http://localhost:3000/ |");
+	console.log("--------------------------");
 });
