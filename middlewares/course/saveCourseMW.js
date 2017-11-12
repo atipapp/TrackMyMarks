@@ -11,7 +11,8 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('saveCourseMW');
-
+        console.log("\tNév:" + req.body.name); //DEBUG
+        console.log("\tWeb:" +req.body.website); //DEBUG
 
         if ((typeof req.body.name === 'undefined') ||
             (typeof req.body.website === 'undefined')) {
@@ -28,9 +29,6 @@ module.exports = function (objectrepository) {
 
         course.name = req.body.name;
         course.website = req.body.website;
-
-        console.log("\tNév:" + req.body.name); //DEBUG
-        console.log("\tWeb:" +req.body.website); //DEBUG
 
         course.save(function (err, result) {
             if (err) {
