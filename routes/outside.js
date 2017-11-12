@@ -6,12 +6,12 @@ var renderMW = require('../middlewares/generic/render');
 var saveUserByIdMW = require('../middlewares/user/saveUserByIdMW');
 
 
-//var userModel = require('../models/user');
+var userModel = require('../models/user');
 
 module.exports = function (app) {
 
     var objectRepository = {
-        //userModel: userModel
+        userModel: userModel
     };
 
     /**

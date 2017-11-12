@@ -1,4 +1,4 @@
-//var requireOption = require('../common').requireOption;
+var requireOption = require('../common').requireOption;
 
 /**
  * This middleware loads the user from model and checks the credentials,
@@ -6,8 +6,7 @@
  * if they are wrong, set error message
  */
 module.exports = function (objectrepository) {
-
-    //var userModel = requireOption(objectrepository,'userModel');
+    var userModel = requireOption(objectrepository,'userModel');
 
     return function (req, res, next) {
         console.log('checkUserLoginMW');

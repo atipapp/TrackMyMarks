@@ -1,15 +1,21 @@
-module.exports = function (app){
-    var authMW = require('../middlewares/generic/authMW');
-    var renderMW = require('../middlewares/generic/render');
-    var getCourseMW = require('../middlewares/course/getCourseMW');
-    var saveCourseMW = require('../middlewares/course/saveCourseMW');
-    var deleteCourseMW = require('../middlewares/course/deleteCourseMW');
-    var getAllCoursesMW = require('../middlewares/course/getAllCoursesMW');
-    var getAllMarkMW = require('../middlewares/marks/getAllMarksMW');
-    var saveMarkMW = require('../middlewares/marks/saveMarkMW');
-    var mainRedirectMW = require('../middlewares/generic/mainRedirectMW');
+var authMW = require('../middlewares/generic/authMW');
+var renderMW = require('../middlewares/generic/render');
+var getCourseMW = require('../middlewares/course/getCourseMW');
+var saveCourseMW = require('../middlewares/course/saveCourseMW');
+var deleteCourseMW = require('../middlewares/course/deleteCourseMW');
+var getAllCoursesMW = require('../middlewares/course/getAllCoursesMW');
+var getAllMarkMW = require('../middlewares/marks/getAllMarksMW');
+var saveMarkMW = require('../middlewares/marks/saveMarkMW');
+var mainRedirectMW = require('../middlewares/generic/mainRedirectMW');
 
-    var objrep = {};
+var courseModel = require('../models/course');
+var markModel = require('../models/mark'); //Erre a getAllMarkMW miatt van szükség
+
+module.exports = function (app) {
+    var objrep = {
+        courseModel: courseModel,
+        markModel: markModel
+    };
 
     /**
      * Get course details for a single course.
@@ -18,7 +24,7 @@ module.exports = function (app){
         authMW(objrep),
         getCourseMW(objrep),
         getAllMarkMW(objrep),
-        renderMW(objrep,'coursedetail'));
+        renderMW(objrep, 'coursedetail'));
 
     /**
      * Send back the newly created mark.
@@ -26,7 +32,7 @@ module.exports = function (app){
     app.post('/courses/details/id',
         authMW(objrep),
         saveMarkMW(objrep),
-        renderMW(objrep,'coursedetail'));
+        renderMW(objrep, 'coursedetail'));
 
     /**
      * Get course details for editing.
@@ -34,7 +40,7 @@ module.exports = function (app){
     app.get('/courses/edit/id',
         authMW(objrep),
         getCourseMW(objrep),
-        renderMW(objrep,'editcourse'));
+        renderMW(objrep, 'editcourse'));
 
     /**
      * Send back the changes.
@@ -58,7 +64,7 @@ module.exports = function (app){
     app.get('/courses/',
         authMW(objrep),
         getAllCoursesMW(objrep),
-        renderMW(objrep,'courses'));
+        renderMW(objrep, 'courses'));
 
     /**
      * Send back the newly created course.
@@ -66,5 +72,5 @@ module.exports = function (app){
     app.post('/courses/',
         authMW(objrep),
         saveCourseMW(objrep),
-        renderMW(objrep,'courses'));
+        renderMW(objrep, 'courses'));
 };

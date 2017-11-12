@@ -1,4 +1,4 @@
-//var requireOption = require('../common').requireOption;
+var requireOption = require('../common').requireOption;
 
 /**
  * Get all the courses
@@ -6,7 +6,7 @@
  */
 module.exports = function (objectrepository) {
 
-    //var targyModel = requireOption(objectrepository, 'taskModel');
+    var courseModel = requireOption(objectrepository, 'courseModel');
 
     return function (req, res, next) {
         console.log('getAllCoursesMW');

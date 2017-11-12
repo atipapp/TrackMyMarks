@@ -1,4 +1,4 @@
-//var requireOption = require('../common').requireOption;
+var requireOption = require('../common').requireOption;
 
 /**
  * Log out the user
@@ -6,7 +6,7 @@
  */
 module.exports = function (objectrepository) {
 
-    //var userModel = requireOption(objectrepository,'userModel');
+    var userModel = requireOption(objectrepository,'userModel');
 
     return function (req, res, next) {
         console.log('logoutMW');

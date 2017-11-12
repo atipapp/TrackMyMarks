@@ -1,12 +1,16 @@
-module.exports = function (app){
-    var authMW = require('../middlewares/generic/authMW');
-    var renderMW = require('../middlewares/generic/render');
-    var getMarkMW = require('../middlewares/marks/getMarkMW');
-    var saveMarkMW = require('../middlewares/marks/saveMarkMW');
-    var deleteMarkMW = require('../middlewares/marks/deleteMarkMW');
-    var tempRedirectMW = require('../middlewares/generic/tempRedirectMW');
+var authMW = require('../middlewares/generic/authMW');
+var renderMW = require('../middlewares/generic/render');
+var getMarkMW = require('../middlewares/marks/getMarkMW');
+var saveMarkMW = require('../middlewares/marks/saveMarkMW');
+var deleteMarkMW = require('../middlewares/marks/deleteMarkMW');
+var tempRedirectMW = require('../middlewares/generic/tempRedirectMW');
 
-    var objrep = {};
+var markModel = require('../models/mark');
+
+module.exports = function (app) {
+    var objrep = {
+        markModel: markModel
+    };
 
     /**
      * Edit one given mark's parameters.
@@ -14,7 +18,7 @@ module.exports = function (app){
     app.get('/marks/edit/id',
         authMW(objrep),
         getMarkMW(objrep),
-        renderMW(objrep,'editmark'));
+        renderMW(objrep, 'editmark'));
 
     /**
      * Save the modified mark.

@@ -6,14 +6,9 @@
  */
 //TODO: remove this MW
 module.exports = function (objectrepository) {
-
-
     return function (req, res, next) {
         console.log('tempRedirectMW');
         //return next();
         return res.redirect('/courses/details/id');
     };
-
-
-
 };

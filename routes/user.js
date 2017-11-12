@@ -1,11 +1,15 @@
-module.exports = function (app){
-    var authMW = require('../middlewares/generic/authMW');
-    var renderMW = require('../middlewares/generic/render');
-    var getUserByIdMW = require('../middlewares/user/getUserByIdMW');
-    var saveUserByIdMW = require('../middlewares/user/saveUserByIdMW');
-    var logoutMW = require('../middlewares/user/logoutMW');
+var authMW = require('../middlewares/generic/authMW');
+var renderMW = require('../middlewares/generic/render');
+var getUserByIdMW = require('../middlewares/user/getUserByIdMW');
+var saveUserByIdMW = require('../middlewares/user/saveUserByIdMW');
+var logoutMW = require('../middlewares/user/logoutMW');
 
-    var objrep = {};
+var userModel = require('../models/user');
+
+module.exports = function (app) {
+    var objrep = {
+        userModel: userModel
+    };
 
     /**
      * Get the user's profile data.
@@ -13,7 +17,7 @@ module.exports = function (app){
     app.get('/profile',
         authMW(objrep),
         getUserByIdMW(objrep),
-        renderMW(objrep,'profile'));
+        renderMW(objrep, 'profile'));
 
     /**
      * Save the changes made on the profile.
@@ -21,7 +25,7 @@ module.exports = function (app){
     app.post('/profile',
         authMW(objrep),
         saveUserByIdMW(objrep),
-        renderMW(objrep,'profile'));
+        renderMW(objrep, 'profile'));
 
     /**
      * Log the user out.
@@ -29,5 +33,5 @@ module.exports = function (app){
     app.get('/logout',
         authMW(objrep),
         logoutMW(objrep),
-        renderMW(objrep,'index'));
+        renderMW(objrep, 'index'));
 };

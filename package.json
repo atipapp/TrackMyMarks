@@ -8,7 +8,8 @@
     "body-parser": "*",
     "ejs": "*",
     "express": "*",
-    "express-session": "*"
+    "express-session": "*",
+    "mongoose": "*"
   },
   "devDependencies": {},
   "scripts": {

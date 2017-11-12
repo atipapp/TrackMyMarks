@@ -1,4 +1,4 @@
-//var requireOption = require('../common').requireOption;
+var requireOption = require('../common').requireOption;
 
 /**
  * Save the mark for the markid param
@@ -6,6 +6,7 @@
  *  - if there is one, save it
  */
 module.exports = function (objectrepository) {
+    var markModel = requireOption(objectrepository, 'markModel');
     return function (req, res, next) {
         console.log('saveMarkMW');
         return next();
