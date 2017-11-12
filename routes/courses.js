@@ -72,5 +72,9 @@ module.exports = function (app) {
     app.post('/courses/',
         authMW(objrep),
         saveCourseMW(objrep),
-        renderMW(objrep, 'courses'));
+        function (req, res, next) {
+            return res.redirect('/courses');
+        }
+    );
+    //renderMW(objrep, 'courses'));
 };
