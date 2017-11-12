@@ -16,7 +16,7 @@ module.exports = function (objectrepository) {
             }
             console.log(mark);
 
-            return res.redirect('/courses/');
+            return res.redirect('/courses/' + res.tpl.course.id + '/details/');
         });
     }
 
