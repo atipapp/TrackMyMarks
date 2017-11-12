@@ -28,14 +28,14 @@
                     <% courses.forEach(function(item){ %>
                     <tr>
                         <td>
-                            <a href="/courses/details/id"><%= item.name %></a>
+                            <a href="/courses/<%= item.id %>/details"><%= item.name %></a>
                         </td>
                         <td class="text-center">5</td>
                         <td class="text-center">
-                            <a class="btn btn-primary" href="/courses/edit/id">Szerkesztés</a>
+                            <a class="btn btn-primary" href="/courses/<%= item.id %>/edit">Szerkesztés</a>
                         </td>
                         <td class="text-center">
-                            <a class="btn btn-primary" href="/courses/delete/<%= item.id %>">Törlés</a>
+                            <a class="btn btn-primary" href="/courses/<%= item.id %>/delete">Törlés</a>
                         </td>
                     </tr>
                     <% }); %>

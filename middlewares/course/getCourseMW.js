@@ -11,7 +11,19 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('getCourseMW');
-        return next();
+
+        courseModel.findOne({
+            id: req.param('courseid')
+        }).exec(function (err, result) {
+            if ((err) || (!result)) {
+                return res.redirect('/courses');
+            }
+
+            res.tpl.course = result;
+            console.log(res.tpl.course); //DEBUG
+
+            return next();
+        });
     };
 
 };

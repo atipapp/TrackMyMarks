@@ -20,7 +20,7 @@ module.exports = function (app) {
     /**
      * Get course details for a single course.
      */
-    app.get('/courses/details/id',
+    app.get('/courses/:id/details',
         authMW(objrep),
         getCourseMW(objrep),
         getAllMarkMW(objrep),
@@ -29,7 +29,7 @@ module.exports = function (app) {
     /**
      * Send back the newly created mark.
      */
-    app.post('/courses/details/id',
+    app.post('/courses/:id/details',
         authMW(objrep),
         saveMarkMW(objrep),
         renderMW(objrep, 'coursedetail'));
@@ -37,7 +37,7 @@ module.exports = function (app) {
     /**
      * Get course details for editing.
      */
-    app.get('/courses/edit/id',
+    app.get('/courses/:id/edit',
         authMW(objrep),
         getCourseMW(objrep),
         renderMW(objrep, 'editcourse'));
@@ -45,7 +45,7 @@ module.exports = function (app) {
     /**
      * Send back the changes.
      */
-    app.post('/courses/edit/id',
+    app.post('/courses/:id/edit',
         authMW(objrep),
         saveCourseMW(objrep),
         mainRedirectMW(objrep));
@@ -53,7 +53,7 @@ module.exports = function (app) {
     /**
      * Delete a course by its id
      */
-    app.get('/courses/details/:id/delete',
+    app.get('/courses/:id/delete',
         authMW(objrep),
         getCourseMW(objrep),
         deleteCourseMW(objrep));
