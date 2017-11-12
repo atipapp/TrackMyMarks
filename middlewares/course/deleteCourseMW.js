@@ -11,7 +11,19 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('deleteCourseMW');
-        return next();
-    };
+        console.log(res.tpl.course); //DEBUG
 
+        if (typeof res.tpl.course === 'undefined') {
+            return next();
+        }
+
+        res.tpl.course.remove(function (err) {
+            if (err) {
+                return next(err);
+            }
+
+            //redirect to all tasks
+            res.redirect('/courses/');
+        });
+    };
 };

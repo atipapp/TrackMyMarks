@@ -53,10 +53,10 @@ module.exports = function (app) {
     /**
      * Delete a course by its id
      */
-    app.get('/courses/delete/id',
+    app.get('/courses/details/:id/delete',
         authMW(objrep),
-        deleteCourseMW(objrep),
-        mainRedirectMW(objrep));
+        getCourseMW(objrep),
+        deleteCourseMW(objrep));
 
     /**
      * List all courses
