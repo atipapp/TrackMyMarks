@@ -12,12 +12,13 @@ module.exports = function (objectrepository) {
 
         markModel.findOne({
             _id: req.param('id')
-        }, function (err, result) {
+        }).populate('_course').exec(function (err, result) {
             if ((err) || (!result)) {
                 return res.redirect('/courses/');
             }
 
             res.tpl.currentmark = result;
+            console.log(res.tpl.currentmark);
             return next();
         });
     };

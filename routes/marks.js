@@ -3,7 +3,7 @@ var renderMW = require('../middlewares/generic/render');
 var getMarkMW = require('../middlewares/marks/getMarkMW');
 var saveMarkMW = require('../middlewares/marks/saveMarkMW');
 var deleteMarkMW = require('../middlewares/marks/deleteMarkMW');
-var tempRedirectMW = require('../middlewares/generic/tempRedirectMW');
+
 
 var markModel = require('../models/mark');
 
@@ -25,14 +25,13 @@ module.exports = function (app) {
      */
     app.post('/marks/:id/edit',
         authMW(objrep),
-        saveMarkMW(objrep),
-        tempRedirectMW(objrep));
+        saveMarkMW(objrep));
 
     /**
      * Delete the mark by its id.
      */
     app.get('/marks/:id/delete',
         authMW(objrep),
-        deleteMarkMW(objrep),
-        tempRedirectMW(objrep));
+        getMarkMW(objrep),
+        deleteMarkMW(objrep));
 };

@@ -10,7 +10,14 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('deleteMarkMW');
-        return next();
-    };
 
-};
+
+        if (typeof res.tpl.currentmark === 'undefined') {
+            return next();
+        }
+
+        res.tpl.currentmark.remove();
+        return res.redirect('/courses/' + res.tpl.currentmark._course.id + '/details/');
+
+    };
+}
