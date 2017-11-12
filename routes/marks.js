@@ -15,7 +15,7 @@ module.exports = function (app) {
     /**
      * Edit one given mark's parameters.
      */
-    app.get('/marks/edit/id',
+    app.get('/marks/:id/edit',
         authMW(objrep),
         getMarkMW(objrep),
         renderMW(objrep, 'editmark'));
@@ -23,7 +23,7 @@ module.exports = function (app) {
     /**
      * Save the modified mark.
      */
-    app.post('/marks/edit/id',
+    app.post('/marks/:id/edit',
         authMW(objrep),
         saveMarkMW(objrep),
         tempRedirectMW(objrep));
@@ -31,7 +31,7 @@ module.exports = function (app) {
     /**
      * Delete the mark by its id.
      */
-    app.get('/marks/delete/id',
+    app.get('/marks/:id/delete',
         authMW(objrep),
         deleteMarkMW(objrep),
         tempRedirectMW(objrep));

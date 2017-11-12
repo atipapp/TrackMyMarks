@@ -31,6 +31,7 @@ module.exports = function (app) {
      */
     app.post('/courses/:id/details',
         authMW(objrep),
+        getCourseMW(objrep),
         saveMarkMW(objrep),
         renderMW(objrep, 'coursedetail'));
 

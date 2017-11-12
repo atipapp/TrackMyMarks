@@ -9,7 +9,17 @@ module.exports = function (objectrepository) {
     var markModel = requireOption(objectrepository, 'markModel');
     return function (req, res, next) {
         console.log('getMarkMW');
-        return next();
+
+        markModel.findOne({
+            _id: req.param('id')
+        }, function (err, result) {
+            if ((err) || (!result)) {
+                return res.redirect('/courses/');
+            }
+
+            res.tpl.currentmark = result;
+            return next();
+        });
     };
 
 };

@@ -8,7 +8,19 @@ module.exports = function (objectrepository) {
     var markModel = requireOption(objectrepository, 'markModel');
     return function (req, res, next) {
         console.log('getAllMarksMW');
-        return next();
+
+
+        markModel.find({
+            _course: req.param('id')
+        }).exec(function (err, results) {
+            if (err) {
+                return next(err);
+            }
+
+            res.tpl.coursemarks = results;
+            console.log(res.tpl.coursemarks);
+            return next();
+        });
     };
 
 };
