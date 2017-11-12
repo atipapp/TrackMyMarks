@@ -15,7 +15,8 @@ module.exports = function (objectrepository) {
         console.log("\tWeb:" +req.body.website); //DEBUG
 
         if ((typeof req.body.name === 'undefined') ||
-            (typeof req.body.website === 'undefined')) {
+            (typeof req.body.website === 'undefined') ||
+            (typeof req.body.lecturer === 'undefined')) {
             return next();
         }
 
@@ -29,6 +30,7 @@ module.exports = function (objectrepository) {
 
         course.name = req.body.name;
         course.website = req.body.website;
+        course.lecturer = req.body.lecturer;
 
         course.save(function (err, result) {
             if (err) {
