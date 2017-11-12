@@ -20,11 +20,11 @@
                         <form method="post" action="/courses/<%= course.id %>/edit">
                             <div class="form-group">
                                 <div class="form-group"> <label class="text-primary">Név</label>
-                                    <input type="text" required name="name" class="form-control" placeholder="<%= course.name %>"> </div>
+                                    <input type="text" required name="name" class="form-control" value="<%= course.name %>"> </div>
                                 <div class="form-group"> <label class="text-primary">Tárgyhonlap</label>
-                                    <input type="text" name="website" class="form-control" placeholder="<%= course.website %>"> </div>
+                                    <input type="text" name="website" class="form-control" value="<%= course.website %>"> </div>
                                 <div class="form-group"> <label class="text-primary">Előadó</label>
-                                    <input type="text" name="lecturer" class="form-control" placeholder="<%= course.lecturer %>"> </div>
+                                    <input type="text" name="lecturer" class="form-control" value="<%= course.lecturer %>"> </div>
                                 <button type="submit" class="btn btn-secondary">Mentés</button>
                             </div>
                         </form>
