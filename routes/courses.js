@@ -47,6 +47,7 @@ module.exports = function (app) {
      */
     app.post('/courses/:id/edit',
         authMW(objrep),
+        getCourseMW(objrep),
         saveCourseMW(objrep),
         mainRedirectMW(objrep));
 
