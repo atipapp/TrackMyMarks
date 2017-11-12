@@ -13,7 +13,7 @@ module.exports = function (objectrepository) {
         console.log('getCourseMW');
 
         courseModel.findOne({
-            id: req.param('courseid')
+            _id: req.param('id')
         }).exec(function (err, result) {
             if ((err) || (!result)) {
                 return res.redirect('/courses');
