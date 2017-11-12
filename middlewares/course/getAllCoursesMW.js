@@ -10,7 +10,15 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('getAllCoursesMW');
-        return next();
-    };
 
+        courseModel.find({}, function (err, results) {
+            if (err) {
+                return next(new Error('Error getting tasks'));
+            }
+
+            res.tpl.courses = results;
+            console.log(results); //DEBUG
+            return next();
+        });
+    };
 };
