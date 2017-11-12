@@ -72,8 +72,8 @@
     <div class="container">
         <h1 class="">Új jegy felvétele</h1>
         <div class="row">
-            <div class="col-md-12">
-                <form class="form-inline" method="post" action="/courses/<%= course.id %>/details">
+            <form class="form-inline" method="post" action="/courses/<%= course.id %>/details">
+                <div class="col-md-12">
                     <div class="form-group">
                         <select name=value class="form-control" id="sel1">
                             <option value="5">5</option>
@@ -82,13 +82,17 @@
                             <option value="2">2</option>
                             <option value="1">1</option>
                         </select>
+                        <input type="text" name="details" class="form-control p-2 m-2 w-25"
+                               placeholder="Részletek">
+                        <input type="text" name="date" class="form-control p-2 m-2" placeholder="Dátum">
                     </div>
-                    <input type="text" name="details" class="form-control p-2 m-2 w-25"
-                           placeholder="Részletek">
-                    <input type="text" name="date" class="form-control p-2 m-2" placeholder="Dátum">
-                    <button type="submit" class="btn btn-primary p-2 m-1">Hozzáadás</button>
-                </form>
-            </div>
+
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary p-2">Hozzáadás</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
