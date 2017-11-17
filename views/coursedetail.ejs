@@ -46,7 +46,6 @@
                         <th>Jegy</th>
                         <th>Részletek</th>
                         <th>Dátum</th>
-                        <th class="text-center">Szerkesztés</th>
                         <th class="text-center">Törlés</th>
                     </tr>
                     </thead>
@@ -56,9 +55,6 @@
                         <td><%= item.value %></td>
                         <td><%= item.details %></td>
                         <td> <%= item.date %></td>
-                        <td class="text-center">
-                            <a class="btn btn-primary" href="/marks/edit/id">Szerkesztés</a>
-                        </td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="/marks/<%= item.id %>/delete">Törlés</a>
                         </td>
