@@ -11,7 +11,9 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
         console.log('getAllCoursesMW');
 
-        courseModel.find({}, function (err, results) {
+        courseModel.find({
+            _user: req.session.userid
+        }, function (err, results) {
             if (err) {
                 return next(new Error('Error getting tasks'));
             }
