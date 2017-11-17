@@ -7,14 +7,17 @@ var getAllCoursesMW = require('../middlewares/course/getAllCoursesMW');
 var getAllMarkMW = require('../middlewares/marks/getAllMarksMW');
 var saveMarkMW = require('../middlewares/marks/saveMarkMW');
 var mainRedirectMW = require('../middlewares/generic/mainRedirectMW');
+var getUserByIdMW = require('../middlewares/user/getUserByIdMW');
 
 var courseModel = require('../models/course');
 var markModel = require('../models/mark'); //Erre a getAllMarkMW miatt van szükség
+var userModel = require('../models/user');
 
 module.exports = function (app) {
     var objrep = {
         courseModel: courseModel,
-        markModel: markModel
+        markModel: markModel,
+        userModel: userModel
     };
 
     /**
@@ -65,6 +68,7 @@ module.exports = function (app) {
      */
     app.get('/courses/',
         authMW(objrep),
+        getUserByIdMW(objrep),
         getAllCoursesMW(objrep),
         renderMW(objrep, 'courses'));
 

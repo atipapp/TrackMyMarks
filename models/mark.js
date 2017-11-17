@@ -18,7 +18,6 @@ var Mark = db.model('Mark', {
         type: Schema.Types.ObjectId,
         ref: 'Course'
     }
-    //TODO: melyik Coursehoz tartozik
 });
 
 module.exports = Mark;

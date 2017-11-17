@@ -7,8 +7,11 @@ var Course = db.model('Course', {
         required: true
     },
     lecturer: String,
-    website: String
-    //TODO: melyik Studenthez tartozik
+    website: String,
+    _user:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 module.exports = Course;
