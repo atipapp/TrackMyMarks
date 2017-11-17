@@ -8,10 +8,12 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('mainRedirectMW');
-        //return next();
-        return res.redirect('/courses');
+
+        if (typeof req.session.userid === 'undefined') {
+            return res.redirect('/login');
+        } else {
+            return res.redirect('/courses');
+        }
     };
-
-
 
 };

@@ -10,7 +10,23 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('getUserByIdMW');
-        return next();
+
+        //not enough parameter
+        if ((typeof req.param('userid') === 'undefined') || (req.param('userid') === 'null')) {
+            return next();
+        }
+
+        //lets find the user
+        userModel.findOne({_id: req.param('userid')}, function (err, result) {
+            if (err) {
+                return next(err);
+            }
+
+            res.tpl.user = result;
+
+            return next();
+        });
+
     };
 
 };

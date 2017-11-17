@@ -10,7 +10,34 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('checkUserLoginMW');
-        return next();
+        //not enough parameter
+        if ((typeof req.body === 'undefined') || (typeof req.body.username === 'undefined') ||
+            (typeof req.body.password === 'undefined')) {
+            return next();
+        }
+
+        //lets find the user
+        userModel.findOne({
+            username: req.body.username
+        }, function (err, result) {
+            if ((err) || (!result)) {
+                res.tpl.error.push('Your username address is not registered!');
+                return next();
+            }
+
+            //check password
+            if (result.password !== req.body.password) {
+                res.tpl.error.push('Wrong password!');
+                return next();
+            }
+
+            //login is ok, save id to session
+            req.session.userid = result._id;
+            console.log('Login is ok: ' + req.session.userid)
+
+            //redirect to / so the app can decide where to go next
+            return res.redirect('/');
+        });
     };
 
 };

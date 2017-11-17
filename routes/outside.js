@@ -18,16 +18,14 @@ module.exports = function (app) {
      * Main page
      */
     app.get('/',
-        //mainRedirectMW(objectRepository),
-        renderMW(objectRepository, 'index')
+        mainRedirectMW(objectRepository)
     );
 
     /**
      * Alternative main page
      */
     app.get('/index',
-        //mainRedirectMW(objectRepository),
-        renderMW(objectRepository, 'index')
+        mainRedirectMW(objectRepository)
     );
 
     /**
@@ -44,7 +42,7 @@ module.exports = function (app) {
      */
     app.use('/registration',
         inverseAuthMW(objectRepository),
-        checkUserRegistrationMW(objectRepository),
+        //checkUserRegistrationMW(objectRepository),
         saveUserByIdMW(objectRepository),
         renderMW(objectRepository, 'registration')
     );

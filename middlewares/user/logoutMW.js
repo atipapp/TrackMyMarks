@@ -10,7 +10,9 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('logoutMW');
-        return next();
+        req.session.destroy(function (err) {
+            return next();
+        });
     };
 
 };

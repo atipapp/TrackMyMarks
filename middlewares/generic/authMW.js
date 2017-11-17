@@ -5,6 +5,9 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('authMW');
+        if (typeof req.session.userid === 'undefined') {
+            return res.redirect('/');
+        }
         return next();
     };
 
