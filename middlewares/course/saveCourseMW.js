@@ -11,8 +11,6 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('saveCourseMW');
-        console.log("\tNév:" + req.body.name); //DEBUG
-        console.log("\tWeb:" +req.body.website); //DEBUG
 
         if ((typeof req.body.name === 'undefined') ||
             (typeof req.body.website === 'undefined') ||
@@ -24,8 +22,10 @@ module.exports = function (objectrepository) {
 
         if (typeof res.tpl.course !== 'undefined') {
             course = res.tpl.course;
+            console.log('\tCourse updated');
         } else {
             course = new courseModel();
+            console.log('\tCourse created');
         }
 
         course.name = req.body.name;

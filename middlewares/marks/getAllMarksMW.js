@@ -46,7 +46,6 @@ module.exports = function (objectrepository) {
             })
 
             res.tpl.coursemarks = results;
-            console.log(res.tpl.course.avg);
             return next();
         });
     };

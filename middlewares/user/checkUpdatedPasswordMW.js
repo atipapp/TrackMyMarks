@@ -19,6 +19,8 @@ module.exports = function (objectrepository) {
         if( (user.password === req.body.passwordold) && (req.body.password === req.body.passwordagain) ){
             user.password = req.body.password;
             console.log('\tPassword updated.');
+        } else{
+            console.log('\tPassword mismatch. ')
         }
 
         if (req.body.passwordreminder.indexOf(user.password) === -1){

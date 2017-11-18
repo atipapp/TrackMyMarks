@@ -12,7 +12,6 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('deleteCourseMW');
-        console.log(res.tpl.course); //DEBUG
 
         if (typeof res.tpl.course === 'undefined') {
             return next();

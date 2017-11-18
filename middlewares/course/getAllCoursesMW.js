@@ -15,11 +15,10 @@ module.exports = function (objectrepository) {
             _user: req.session.userid
         }, function (err, results) {
             if (err) {
-                return next(new Error('Error getting tasks'));
+                return next(new Error('Error getting courses'));
             }
 
             res.tpl.courses = results;
-            console.log(results); //DEBUG
             return next();
         });
     };

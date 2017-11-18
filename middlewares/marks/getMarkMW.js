@@ -18,7 +18,6 @@ module.exports = function (objectrepository) {
             }
 
             res.tpl.currentmark = result;
-            console.log(res.tpl.currentmark);
             return next();
         });
     };

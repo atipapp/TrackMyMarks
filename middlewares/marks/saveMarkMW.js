@@ -13,7 +13,7 @@ module.exports = function (objectrepository) {
         if (mark.date === null){
             var today = new Date();
             today.setHours(0, 0, 0, 0);
-            console.log('\tEmpty date field. Setting todays date: ' + today);
+            console.log('\tEmpty date field. Setting todays date.');
             mark.date = today;
         }
 
@@ -21,7 +21,6 @@ module.exports = function (objectrepository) {
             if (err) {
                 return next(err);
             }
-            console.log(mark);
 
             return res.redirect('/courses/' + res.tpl.course.id + '/details/');
         });
@@ -44,6 +43,8 @@ module.exports = function (objectrepository) {
             mark.details = req.body.newmark.details;
             mark._course = res.tpl.course.id;
 
+            console.log('\tMark updated');
+
             return saveCallback(res, next, mark);
         } else {
             mark = new markModel();
@@ -51,6 +52,8 @@ module.exports = function (objectrepository) {
             mark.date = req.body.date;
             mark.details = req.body.details;
             mark._course = res.tpl.course.id;
+
+            console.log('\tMark created');
 
             return saveCallback(res, next, mark);
 

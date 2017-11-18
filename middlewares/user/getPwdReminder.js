@@ -9,7 +9,7 @@ module.exports = function (objectrepository) {
     var userModel = requireOption(objectrepository,'userModel');
 
     return function (req, res, next) {
-        console.log('getUserByIdMW');
+        console.log('getPwdReminder');
 
         //not enough parameter
         if (!(req.body.email)) {
@@ -25,7 +25,7 @@ module.exports = function (objectrepository) {
 
             if (result !== null) res.tpl.reminder = result.passwordreminder;
             else res.tpl.reminder = null;
-            console.log('Reminder: ' + res.tpl.reminder);
+            console.log('\tReminder: ' + res.tpl.reminder);
 
             return next();
         });

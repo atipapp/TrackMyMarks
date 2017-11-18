@@ -13,7 +13,7 @@ module.exports = function (objectrepository) {
 
         //not enough parameter
         if (!(req.session.userid)) {
-            console.log('Not enough param. req.session.userid = ' + req.session.userid);
+            console.log('\tNot enough param. userid = ' + req.session.userid);
             return next();
         }
 
@@ -24,7 +24,7 @@ module.exports = function (objectrepository) {
             }
 
             res.tpl.user = result;
-            console.log('Username: ' + res.tpl.user.username);
+            console.log('\tUsername: ' + res.tpl.user.username);
 
             return next();
         });

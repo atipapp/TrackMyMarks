@@ -11,9 +11,6 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
         console.log('saveUserByIdMW');
 
-        console.log("\tUsername:" + req.body.username); //DEBUG
-        console.log("\tFullname:" + req.body.fullname); //DEBUG
-
         if ((typeof req.body.username === 'undefined') ||
             (typeof req.body.email === 'undefined')) {
             return next();
@@ -28,7 +25,6 @@ module.exports = function (objectrepository) {
             user.username = req.body.username;
             user.password = req.body.password;
         }
-        console.log(user);
 
         user.fullname = req.body.fullname;
         user.email = req.body.email;
@@ -38,7 +34,7 @@ module.exports = function (objectrepository) {
                 return next(err);
             }
 
-            return res.redirect('/courses/');
+            return next();
         });
     };
 

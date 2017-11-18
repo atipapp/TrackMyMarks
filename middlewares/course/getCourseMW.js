@@ -20,7 +20,6 @@ module.exports = function (objectrepository) {
             }
 
             res.tpl.course = result;
-            console.log(res.tpl.course); //DEBUG
 
             return next();
         });

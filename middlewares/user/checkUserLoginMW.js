@@ -22,18 +22,20 @@ module.exports = function (objectrepository) {
         }, function (err, result) {
             if ((err) || (!result)) {
                 res.tpl.error.push('Your username address is not registered!');
+                console.log('\tThe username was not found: ' + req.body.username);
                 return next();
             }
 
             //check password
             if (result.password !== req.body.password) {
                 res.tpl.error.push('Wrong password!');
+                console.log('\tWrong password');
                 return next();
             }
 
             //login is ok, save id to session
             req.session.userid = result._id;
-            console.log('Login is ok: ' + req.session.userid)
+            console.log('\tLogin is ok: ' + req.session.userid)
 
             //redirect to / so the app can decide where to go next
             return res.redirect('/');
