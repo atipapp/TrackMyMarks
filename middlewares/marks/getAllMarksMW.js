@@ -41,6 +41,10 @@ module.exports = function (objectrepository) {
                 return next();
             });
 
+            results.sort(function (a, b) {
+                return a.date - b.date;
+            })
+
             res.tpl.coursemarks = results;
             console.log(res.tpl.course.avg);
             return next();
