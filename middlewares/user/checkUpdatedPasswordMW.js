@@ -10,7 +10,7 @@ module.exports = function (objectrepository) {
         if ((typeof req.body.passwordold === 'undefined') ||
             (typeof req.body.password === 'undefined')    ||
             (typeof req.body.passwordagain === 'undefined')) {
-            console.log('Not enough password params were given.');
+            console.log('\tNot enough password params were given to update the password.');
             return next();
         }
 
@@ -18,17 +18,20 @@ module.exports = function (objectrepository) {
 
         if( (user.password === req.body.passwordold) && (req.body.password === req.body.passwordagain) ){
             user.password = req.body.password;
-            console.log('Password updated.');
+            console.log('\tPassword updated.');
         }
 
-        console.log(user);
+        if (req.body.passwordreminder.indexOf(user.password) === -1){
+            user.passwordreminder = req.body.passwordreminder;
+            console.log('\tPassword reminder updated.');
+        }
 
         user.save(function (err, result) {
             if (err) {
                 return next(err);
             }
 
-            return res.redirect('/courses/');
+            return next();
         });
     };
 

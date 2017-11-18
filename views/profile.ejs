@@ -23,7 +23,7 @@
                                         <input type="hidden" name="username" value="<%= user.username %>">
                                         <div class="form-group"> <label class="text-primary">Teljes név</label>
                                             <input type="text" name="fullname" class="form-control" value="<%= user.fullname %>"></div>
-                                        <div class="form-group"> <label class="text-primary">Email</label>
+                                        <div class="form-group"> <label class="text-primary">Email*</label>
                                             <input type="email" required name="email" class="form-control" value="<%= user.email %>"></div>
                                         <button type="submit" class="btn btn-secondary">Mentés</button>
                                     </div>
@@ -40,12 +40,14 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <div class="form-group"> <label class="text-primary">Régi jelszó</label>
+                                        <div class="form-group"> <label class="text-primary">Régi jelszó*</label>
                                             <input type="password" name="passwordold" class="form-control" placeholder="Régi jelszó"> </div>
-                                        <div class="form-group"> <label class="text-primary">Új jelszó</label>
+                                        <div class="form-group"> <label class="text-primary">Új jelszó*</label>
                                             <input type="password" name="password" class="form-control" placeholder="Új jelszó"> </div>
-                                        <div class="form-group"> <label class="text-primary">Új jelszó mégegyszer</label>
+                                        <div class="form-group"> <label class="text-primary">Új jelszó mégegyszer*</label>
                                             <input type="password" name="passwordagain" class="form-control" placeholder="Új jelszó mégegyszer"> </div>
+                                        <div class="form-group"> <label class="text-primary" title="Ha szükséged lenne rá bejelentkezés nélkül megtekinthető az email megadása után. Ne írd be ide a jelszavad.">Jelszó emlékeztető</label>
+                                            <input type="text" name="passwordreminder" class="form-control" value="<%= user.passwordreminder %>" placeholder="Ne írd be ide a jelszavad" title="Ha szükséged lenne rá bejelentkezés nélkül megtekinthető az email megadása után. Ne írd be ide a jelszavad."> </div>
                                         <button type="submit" class="btn btn-secondary">Jelszó megváltoztatása</button>
                                     </div>
                                 </div>
