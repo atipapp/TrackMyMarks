@@ -4,6 +4,7 @@ var checkUserLoginMW = require('../middlewares/user/checkUserLoginMW');
 var checkUserRegistrationMW = require('../middlewares/user/checkUserRegistrationMW');
 var renderMW = require('../middlewares/generic/render');
 var saveUserByIdMW = require('../middlewares/user/saveUserByIdMW');
+var getPwdReminder = require('../middlewares/user/getPwdReminder');
 
 
 var userModel = require('../models/user');
@@ -56,4 +57,13 @@ module.exports = function (app) {
         renderMW(objectRepository, 'forgottenpassword')
     );
 
+    /**
+     * PWD reminder show
+     */
+    app.post('/showforgottenpassword',
+        inverseAuthMW(objectRepository),
+        checkUserRegistrationMW(objectRepository),
+        getPwdReminder(objectRepository),
+        renderMW(objectRepository, 'showforgottenpassword')
+    );
 };
