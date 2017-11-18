@@ -15,8 +15,7 @@ module.exports = function (objectrepository) {
         console.log("\tFullname:" + req.body.fullname); //DEBUG
 
         if ((typeof req.body.username === 'undefined') ||
-            (typeof req.body.email === 'undefined') ||
-            (typeof req.body.password === 'undefined')) {
+            (typeof req.body.email === 'undefined')) {
             return next();
         }
 
@@ -26,12 +25,13 @@ module.exports = function (objectrepository) {
             user = res.tpl.user;
         } else {
             user = new userModel();
+            user.username = req.body.username;
+            user.password = req.body.password;
         }
+        console.log(user);
 
-        user.username = req.body.username;
         user.fullname = req.body.fullname;
         user.email = req.body.email;
-        user.password = req.body.password;
 
         user.save(function (err, result) {
             if (err) {

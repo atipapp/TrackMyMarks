@@ -3,6 +3,7 @@ var renderMW = require('../middlewares/generic/render');
 var getUserByIdMW = require('../middlewares/user/getUserByIdMW');
 var saveUserByIdMW = require('../middlewares/user/saveUserByIdMW');
 var logoutMW = require('../middlewares/user/logoutMW');
+var checkUpdatedPasswordMW = require('../middlewares/user/checkUpdatedPasswordMW');
 
 var userModel = require('../models/user');
 
@@ -24,6 +25,8 @@ module.exports = function (app) {
      */
     app.post('/profile',
         authMW(objrep),
+        getUserByIdMW(objrep),
+        checkUpdatedPasswordMW(objrep),
         saveUserByIdMW(objrep),
         renderMW(objrep, 'profile'));
 
