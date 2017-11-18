@@ -8,6 +8,7 @@ var requireOption = require('../common').requireOption;
 module.exports = function (objectrepository) {
 
     var courseModel = requireOption(objectrepository, 'courseModel');
+    var markModel = requireOption(objectrepository, 'markModel');
 
     return function (req, res, next) {
         console.log('deleteCourseMW');
@@ -21,6 +22,18 @@ module.exports = function (objectrepository) {
             if (err) {
                 return next(err);
             }
+
+            markModel.find({
+                _course: res.tpl.course
+            }).exec(function (err, results) {
+                if (err) {
+                    return next(err);
+                }
+
+                results.forEach(function (element) {
+                    element.remove();
+                });
+            });
 
             //redirect to all tasks
             res.redirect('/courses/');
