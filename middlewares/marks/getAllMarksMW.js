@@ -6,9 +6,11 @@ var requireOption = require('../common').requireOption;
  */
 module.exports = function (objectrepository) {
     var markModel = requireOption(objectrepository, 'markModel');
+    var courseModel = requireOption(objectrepository, 'courseModel');
+
+
     return function (req, res, next) {
         console.log('getAllMarksMW');
-
 
         markModel.find({
             _course: req.param('id')
@@ -17,8 +19,30 @@ module.exports = function (objectrepository) {
                 return next(err);
             }
 
+            res.tpl.course.avg = 0;
+            results.forEach(function (element) {
+                res.tpl.course.avg += element.value;
+            });
+
+            if (res.tpl.course.avg > 0 && results.length > 0){
+                res.tpl.course.avg/=results.length;
+            }
+
+            res.tpl.course.avg = Math.round( res.tpl.course.avg * 100 ) / 100;
+
+            var course = res.tpl.course;
+
+            course.save(function (err, result) {
+                if (err) {
+                    return next(err);
+                }
+
+                //return res.redirect('/courses/' + result.id);
+                return next();
+            });
+
             res.tpl.coursemarks = results;
-            console.log(res.tpl.coursemarks);
+            console.log(res.tpl.course.avg);
             return next();
         });
     };

@@ -11,7 +11,8 @@ var Course = db.model('Course', {
     _user:{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    avg: Number
 });
 
 module.exports = Course;

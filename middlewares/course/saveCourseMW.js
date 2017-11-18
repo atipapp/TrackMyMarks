@@ -32,6 +32,7 @@ module.exports = function (objectrepository) {
         course.website = req.body.website;
         course.lecturer = req.body.lecturer;
         course._user = req.session.userid;
+        course.avg = 0;
 
         course.save(function (err, result) {
             if (err) {
