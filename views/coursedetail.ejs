@@ -54,7 +54,7 @@
                     <tr>
                         <td><%= item.value %></td>
                         <td><%= item.details %></td>
-                        <td> <%= item.date %></td>
+                        <td> <%= item.date.toLocaleDateString() %></td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="/marks/<%= item.id %>/delete">Törlés</a>
                         </td>
@@ -80,7 +80,7 @@
                         </select>
                         <input type="text" name="details" class="form-control p-2 m-2 w-25"
                                placeholder="Részletek">
-                        <input type="text" name="date" class="form-control p-2 m-2" placeholder="Dátum">
+                        <input type="date" name="date" class="form-control p-2 m-2" placeholder="Dátum">
                     </div>
 
                 </div>

@@ -10,6 +10,13 @@ module.exports = function (objectrepository) {
     var markModel = requireOption(objectrepository, 'markModel');
 
     function saveCallback(res, next, mark) {
+        if (mark.date === null){
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+            console.log('\tEmpty date field. Setting todays date: ' + today);
+            mark.date = today;
+        }
+
         mark.save(function (err, result) {
             if (err) {
                 return next(err);
@@ -22,7 +29,6 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log('saveMarkMW');
-
 
         if (typeof req.body.value === 'undefined' ||
             typeof req.body.date === 'undefined' ||
@@ -49,6 +55,5 @@ module.exports = function (objectrepository) {
             return saveCallback(res, next, mark);
 
         }
-
     }
 };
