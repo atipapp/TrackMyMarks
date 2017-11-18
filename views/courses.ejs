@@ -30,7 +30,7 @@
                         <td>
                             <a href="/courses/<%= item.id %>/details"><%= item.name %></a>
                         </td>
-                        <td class="text-center"><%= item.avg %></td>
+                        <td class="text-center"><%= item.avg ? item.avg : '-' %></td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="/courses/<%= item.id %>/edit">Szerkesztés</a>
                         </td>

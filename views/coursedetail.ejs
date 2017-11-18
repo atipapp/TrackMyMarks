@@ -29,7 +29,7 @@
                         <td>
                             <a href="<%= course.website %>"><%= course.website %></a>
                         </td>
-                        <td><%= course.avg %></td>
+                        <td><%= course.avg ? course.avg : '-' %></td>
                     </tr>
                     </tbody>
                 </table>
