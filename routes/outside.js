@@ -41,12 +41,20 @@ module.exports = function (app) {
     /**
      * Registration
      */
-    app.use('/registration',
+    app.get('/registration',
+        inverseAuthMW(objectRepository),
+        renderMW(objectRepository, 'registration')
+    );
+
+    /**
+     * Registration
+     */
+    app.post('/registration',
         inverseAuthMW(objectRepository),
         //checkUserRegistrationMW(objectRepository),
         saveUserByIdMW(objectRepository),
-        mainRedirectMW(objectRepository),
-        renderMW(objectRepository, 'registration')
+        checkUserLoginMW(objectRepository),
+        mainRedirectMW(objectRepository)
     );
 
     /**
