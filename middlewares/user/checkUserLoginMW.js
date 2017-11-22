@@ -21,7 +21,7 @@ module.exports = function (objectrepository) {
             username: req.body.username
         }, function (err, result) {
             if ((err) || (!result)) {
-                res.tpl.error.push('Your username address is not registered!');
+                res.tpl.error.push('Your username is not registered!');
                 console.log('\tThe username was not found: ' + req.body.username);
                 return next();
             }

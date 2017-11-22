@@ -21,6 +21,7 @@ module.exports = function (objectrepository) {
             console.log('\tPassword updated.');
         } else{
             console.log('\tPassword mismatch. ')
+            res.tpl.error.push('Password mismatch.');
         }
 
         if (req.body.passwordreminder.indexOf(user.password) === -1){

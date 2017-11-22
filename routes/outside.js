@@ -51,10 +51,9 @@ module.exports = function (app) {
      */
     app.post('/registration',
         inverseAuthMW(objectRepository),
-        //checkUserRegistrationMW(objectRepository),
+        checkUserRegistrationMW(objectRepository),
         saveUserByIdMW(objectRepository),
-        checkUserLoginMW(objectRepository),
-        mainRedirectMW(objectRepository)
+        renderMW(objectRepository, 'registration')
     );
 
     /**
