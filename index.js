@@ -37,6 +37,7 @@ app.use(bodyParser.urlencoded({
 app.use(function (req, res, next) {
   res.tpl = {};
   res.tpl.error = [];
+  res.tpl.success = [];
   return next();
 });
 

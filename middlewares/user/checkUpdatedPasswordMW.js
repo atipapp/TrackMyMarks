@@ -17,7 +17,10 @@ module.exports = function (objectrepository) {
         var user = res.tpl.user;
 
         if( (user.password === req.body.passwordold) && (req.body.password === req.body.passwordagain) ){
-            if (req.body.password.length > 0) user.password = req.body.password;
+            if (req.body.password.length > 0) {
+                user.password = req.body.password;
+                res.tpl.success.push('Jelszó frissítve!');
+            }
             console.log('\tPassword updated.');
         } else{
             console.log('\tPassword mismatch. ')
@@ -26,6 +29,7 @@ module.exports = function (objectrepository) {
 
         if (req.body.passwordreminder.indexOf(user.password) === -1){
             user.passwordreminder = req.body.passwordreminder;
+            res.tpl.success.push('Jelszóemlékeztető frissítve!');
             console.log('\tPassword reminder updated.');
         }
 

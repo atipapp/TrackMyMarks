@@ -21,10 +21,12 @@ module.exports = function (objectrepository) {
 
             if (typeof res.tpl.user !== 'undefined') {
                 user = res.tpl.user;
+                res.tpl.success.push('Sikeres mentés!');
             } else {
                 user = new userModel();
                 user.username = req.body.username;
                 user.password = req.body.password;
+                res.tpl.success.push('Sikeres regisztráció!');
             }
 
             user.fullname = req.body.fullname;
@@ -40,7 +42,6 @@ module.exports = function (objectrepository) {
         }
         else{
             console.log('\tNo save occured, because there were errors.');
-            console.log(res.tpl.error.length);
             return next();
         }
     };

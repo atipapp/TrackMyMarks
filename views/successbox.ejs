@@ -1,0 +1,9 @@
+<% if (success.length > 0) { %>
+<div class="alert alert-success">
+    <ul>
+        <% success.forEach(function(item){ %>
+        <li><%= item %></li>
+        <% }); %>
+    </ul>
+</div>
+<% } %>
