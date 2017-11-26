@@ -17,7 +17,7 @@ module.exports = function (objectrepository) {
         var user = res.tpl.user;
 
         if( (user.password === req.body.passwordold) && (req.body.password === req.body.passwordagain) ){
-            user.password = req.body.password;
+            if (req.body.password.length > 0) user.password = req.body.password;
             console.log('\tPassword updated.');
         } else{
             console.log('\tPassword mismatch. ')
