@@ -19,6 +19,16 @@ module.exports = function (objectrepository) {
 
         //lets find the user
         userModel.findOne({
+            username: req.body.username
+        }, function (err, result) {
+
+            if ((err) || (result !== null)) {
+                res.tpl.error.push('Your username is already registered!');
+                console.log('\tYour username is already registered!.');
+            }
+        });
+
+        userModel.findOne({
             email: req.body.email
         }, function (err, result) {
 
