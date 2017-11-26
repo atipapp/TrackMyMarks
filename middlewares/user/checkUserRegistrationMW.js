@@ -23,7 +23,7 @@ module.exports = function (objectrepository) {
         }, function (err, result) {
 
             if ((err) || (result !== null)) {
-                res.tpl.error.push('Your username is already registered!');
+                res.tpl.error.push('Ez a felhasználónév már regisztrálva van!');
                 console.log('\tYour username is already registered!.');
             }
         });
@@ -33,17 +33,17 @@ module.exports = function (objectrepository) {
         }, function (err, result) {
 
             if ((err) || (result !== null)) {
-                res.tpl.error.push('Your email address is already registered!');
+                res.tpl.error.push('Ez az email cím már regisztrálva van!');
                 console.log('\tYour email address is already registered!.');
             }
 
             if (req.body.username.length < 3) {
-                res.tpl.error.push('The username should be at least 3 characters!');
+                res.tpl.error.push('A felhasználónév legalább 3 karakteres!');
                 console.log('\tThe username should be at least 3 characters!');
             }
 
             if (req.body.password !== req.body.passwordagain){
-                res.tpl.error.push('The passwords do not match!');
+                res.tpl.error.push('Nem egyeznek a jelszavak!');
                 console.log('\tThe passwords do not match!');
             }
 

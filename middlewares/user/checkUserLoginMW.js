@@ -21,14 +21,14 @@ module.exports = function (objectrepository) {
             username: req.body.username
         }, function (err, result) {
             if ((err) || (!result)) {
-                res.tpl.error.push('Your username is not registered!');
+                res.tpl.error.push('Érvénytelen felhasználónév!');
                 console.log('\tThe username was not found: ' + req.body.username);
                 return next();
             }
 
             //check password
             if (result.password !== req.body.password) {
-                res.tpl.error.push('Wrong password!');
+                res.tpl.error.push('Hibás jelszó!');
                 console.log('\tWrong password');
                 return next();
             }
