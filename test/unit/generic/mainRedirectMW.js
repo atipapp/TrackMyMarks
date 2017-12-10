@@ -15,6 +15,9 @@ describe('mainRedirectMW', function () {
                 redirect: function (newUrl) {
                     expect(newUrl).be.eql('/courses');
                     done();
+                },
+                tpl : {
+                    logToConsole: false
                 }
             };
             mainRedirectMW({})(reqMock, resMock, function () {
@@ -34,6 +37,9 @@ describe('mainRedirectMW', function () {
                 redirect: function (newUrl) {
                     expect(newUrl).be.eql('/login');
                     done();
+                },
+                tpl : {
+                    logToConsole: false
                 }
             };
             mainRedirectMW({})(reqMock, resMock, function () {
