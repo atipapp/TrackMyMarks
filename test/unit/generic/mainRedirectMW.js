@@ -1,9 +1,9 @@
 var expect = require('chai').expect;
 var mainRedirectMW = require('../../../middlewares/generic/mainRedirectMW');
 
-describe('mainRedirectMW', function () {
-    describe('User logged in', function () {
-        it('should call res.redirect to /courses if the userid in session exists', function (done) {
+describe('mainRedirectMW (redirects to the correct page based on the userid in session)', function () {
+    describe('should redirect to /courses', function () {
+        it('if the userid in session exists', function (done) {
             var reqMock = {
                 session: {
                     userid: '5'
@@ -23,8 +23,8 @@ describe('mainRedirectMW', function () {
         });
     });
 
-    describe('User not logged in', function () {
-        it('should call res.redirect to /login if the userid in session exists', function (done) {
+    describe('should redirect to /login ', function () {
+        it('if the userid in session does not exist', function (done) {
             var reqMock = {
                 session: {}
             };
