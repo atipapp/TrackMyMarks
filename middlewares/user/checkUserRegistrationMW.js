@@ -8,12 +8,12 @@ module.exports = function (objectrepository) {
     var userModel = requireOption(objectrepository, 'userModel');
 
     return function (req, res, next) {
-        console.log('checkUserRegistrationMW');
+        if (res.tpl.logToConsole) console.log('checkUserRegistrationMW');
 
         //not enough parameter
         if ((typeof req.body === 'undefined') || (typeof req.body.email === 'undefined') ||
             (typeof req.body.password === 'undefined')) {
-            console.log('\tNot enough params were given.');
+            if (res.tpl.logToConsole) console.log('\tNot enough params were given.');
             return next();
         }
 
@@ -24,7 +24,7 @@ module.exports = function (objectrepository) {
 
             if ((err) || (result !== null)) {
                 res.tpl.error.push('Ez a felhasználónév már regisztrálva van!');
-                console.log('\tYour username is already registered!.');
+                if (res.tpl.logToConsole) console.log('\tYour username is already registered!.');
             }
         });
 
@@ -34,17 +34,17 @@ module.exports = function (objectrepository) {
 
             if ((err) || (result !== null)) {
                 res.tpl.error.push('Ez az email cím már regisztrálva van!');
-                console.log('\tYour email address is already registered!.');
+                if (res.tpl.logToConsole) console.log('\tYour email address is already registered!.');
             }
 
             if (req.body.username.length < 3) {
                 res.tpl.error.push('A felhasználónév legalább 3 karakteres!');
-                console.log('\tThe username should be at least 3 characters!');
+                if (res.tpl.logToConsole) console.log('\tThe username should be at least 3 characters!');
             }
 
             if (req.body.password !== req.body.passwordagain){
                 res.tpl.error.push('Nem egyeznek a jelszavak!');
-                console.log('\tThe passwords do not match!');
+                if (res.tpl.logToConsole) console.log('\tThe passwords do not match!');
             }
 
             return next();

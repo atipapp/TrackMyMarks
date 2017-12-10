@@ -9,7 +9,7 @@ module.exports = function (objectrepository) {
     var userModel = requireOption(objectrepository, 'userModel');
 
     return function (req, res, next) {
-        console.log('saveUserByIdMW');
+        if (res.tpl.logToConsole) console.log('saveUserByIdMW');
 
         if (res.tpl.error.length === 0) {
             if ((typeof req.body.username === 'undefined') ||
@@ -41,7 +41,7 @@ module.exports = function (objectrepository) {
             });
         }
         else{
-            console.log('\tNo save occured, because there were errors.');
+            if (res.tpl.logToConsole) console.log('\tNo save occured, because there were errors.');
             return next();
         }
     };

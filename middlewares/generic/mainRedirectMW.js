@@ -7,7 +7,7 @@
 module.exports = function (objectrepository) {
 
     return function (req, res, next) {
-        console.log('mainRedirectMW');
+        if (res.tpl.logToConsole) console.log('mainRedirectMW');
 
         if (typeof req.session.userid === 'undefined') {
             return res.redirect('/login');

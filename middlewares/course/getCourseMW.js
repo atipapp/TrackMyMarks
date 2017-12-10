@@ -10,7 +10,7 @@ module.exports = function (objectrepository) {
     var courseModel = requireOption(objectrepository, 'courseModel');
 
     return function (req, res, next) {
-        console.log('getCourseMW');
+        if (res.tpl.logToConsole) console.log('getCourseMW');
 
         courseModel.findOne({
             _id: req.param('id')

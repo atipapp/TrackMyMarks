@@ -5,12 +5,12 @@ var requireOption = require('../common').requireOption;
  */
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        console.log('checkUpdatedPasswordMW');
+        if (res.tpl.logToConsole) console.log('checkUpdatedPasswordMW');
 
         if ((typeof req.body.passwordold === 'undefined') ||
             (typeof req.body.password === 'undefined')    ||
             (typeof req.body.passwordagain === 'undefined')) {
-            console.log('\tNot enough password params were given to update the password.');
+            if (res.tpl.logToConsole) console.log('\tNot enough password params were given to update the password.');
             return next();
         }
 
@@ -21,16 +21,16 @@ module.exports = function (objectrepository) {
                 user.password = req.body.password;
                 res.tpl.success.push('Jelszó frissítve!');
             }
-            console.log('\tPassword updated.');
+            if (res.tpl.logToConsole) console.log('\tPassword updated.');
         } else{
-            console.log('\tPassword mismatch. ')
+            if (res.tpl.logToConsole) console.log('\tPassword mismatch. ')
             res.tpl.error.push('Nem egyeznek a jelszavak!');
         }
 
         if (req.body.passwordreminder.indexOf(user.password) === -1){
             user.passwordreminder = req.body.passwordreminder;
             res.tpl.success.push('Jelszóemlékeztető frissítve!');
-            console.log('\tPassword reminder updated.');
+            if (res.tpl.logToConsole) console.log('\tPassword reminder updated.');
         }
 
         user.save(function (err, result) {

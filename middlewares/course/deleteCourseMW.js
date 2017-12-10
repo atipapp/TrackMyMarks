@@ -11,7 +11,6 @@ module.exports = function (objectrepository) {
     var markModel = requireOption(objectrepository, 'markModel');
 
     return function (req, res, next) {
-        console.log('deleteCourseMW');
 
         if (typeof res.tpl.course === 'undefined') {
             return next();

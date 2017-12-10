@@ -9,7 +9,7 @@ module.exports = function (objectrepository) {
     var markModel = requireOption(objectrepository, 'markModel');
 
     return function (req, res, next) {
-        console.log('deleteMarkMW');
+        if (res.tpl.logToConsole) console.log('deleteMarkMW');
 
 
         if (typeof res.tpl.currentmark === 'undefined') {

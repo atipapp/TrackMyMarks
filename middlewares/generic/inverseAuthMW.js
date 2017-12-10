@@ -4,7 +4,7 @@
 module.exports = function (objectrepository) {
 
     return function (req, res, next) {
-        console.log('inverseAuthMW');
+        if (res.tpl.logToConsole) console.log('inverseAuthMW');
         if (typeof req.session.userid !== 'undefined') {
             return res.redirect('/');
         }

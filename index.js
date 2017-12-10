@@ -38,6 +38,7 @@ app.use(function (req, res, next) {
   res.tpl = {};
   res.tpl.error = [];
   res.tpl.success = [];
+  res.tpl.logToConsole = false;
   return next();
 });
 
@@ -61,9 +62,16 @@ app.use(function (err, req, res, next) {
 });
 
 var server = app.listen(3000, function () {
-	console.log("--------------------------");
-	console.log("|        Welcome!        |");
-	console.log("| The server:            |");
-	console.log("| http://localhost:3000/ |");
-	console.log("--------------------------");
+	console.log("----------------------------------");
+	console.log("|            Welcome!            |");
+    console.log("|                                |");
+	console.log("| The server is available at:    |");
+	console.log("| http://localhost:3000/         |");
+    console.log("|                                |");
+    console.log("| If you want to see debug       |");
+    console.log("| messages here, put             |");
+    console.log("| res.tpl.logToConsole = true    |");
+    console.log("|                                |");
+    console.log("|            Have fun!           |");
+	console.log("----------------------------------");
 });

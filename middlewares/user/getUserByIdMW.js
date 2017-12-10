@@ -9,11 +9,11 @@ module.exports = function (objectrepository) {
     var userModel = requireOption(objectrepository,'userModel');
 
     return function (req, res, next) {
-        console.log('getUserByIdMW');
+        if (res.tpl.logToConsole) console.log('getUserByIdMW');
 
         //not enough parameter
         if (!(req.session.userid)) {
-            console.log('\tNot enough param. userid = ' + req.session.userid);
+            if (res.tpl.logToConsole) console.log('\tNot enough param. userid = ' + req.session.userid);
             return next();
         }
 
@@ -24,7 +24,7 @@ module.exports = function (objectrepository) {
             }
 
             res.tpl.user = result;
-            console.log('\tUsername: ' + res.tpl.user.username);
+            if (res.tpl.logToConsole) console.log('\tUsername: ' + res.tpl.user.username);
 
             return next();
         });

@@ -9,11 +9,11 @@ module.exports = function (objectrepository) {
     var userModel = requireOption(objectrepository,'userModel');
 
     return function (req, res, next) {
-        console.log('getPwdReminder');
+        if (res.tpl.logToConsole) console.log('getPwdReminder');
 
         //not enough parameter
         if (!(req.body.email)) {
-            console.log('Not enough param. req.body.email = ' + req.body.email);
+            if (res.tpl.logToConsole) console.log('Not enough param. req.body.email = ' + req.body.email);
             return next();
         }
 
@@ -25,7 +25,7 @@ module.exports = function (objectrepository) {
 
             if (result !== null) res.tpl.reminder = result.passwordreminder;
             else res.tpl.reminder = null;
-            console.log('\tReminder: ' + res.tpl.reminder);
+            if (res.tpl.logToConsole) console.log('\tReminder: ' + res.tpl.reminder);
 
             return next();
         });

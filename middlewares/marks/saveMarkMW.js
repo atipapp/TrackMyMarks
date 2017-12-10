@@ -9,11 +9,11 @@ module.exports = function (objectrepository) {
 
     var markModel = requireOption(objectrepository, 'markModel');
 
-    function saveCallback(res, next, mark) {
+    function saveCallback(res, next, mark, logToConsole) {
         if (mark.date === null){
             var today = new Date();
             today.setHours(0, 0, 0, 0);
-            console.log('\tEmpty date field. Setting todays date.');
+            if (logToConsole) console.log('\tEmpty date field. Setting todays date.');
             mark.date = today;
         }
 
@@ -27,7 +27,7 @@ module.exports = function (objectrepository) {
     }
 
     return function (req, res, next) {
-        console.log('saveMarkMW');
+        if (res.tpl.logToConsole) console.log('saveMarkMW');
 
         if (typeof req.body.value === 'undefined' ||
             typeof req.body.date === 'undefined' ||
@@ -43,9 +43,9 @@ module.exports = function (objectrepository) {
             mark.details = req.body.newmark.details;
             mark._course = res.tpl.course.id;
 
-            console.log('\tMark updated');
+            if (res.tpl.logToConsole) console.log('\tMark updated');
 
-            return saveCallback(res, next, mark);
+            return saveCallback(res, next, mark, res.tpl.logToConsole);
         } else {
             mark = new markModel();
             mark.value = req.body.value;
@@ -53,9 +53,9 @@ module.exports = function (objectrepository) {
             mark.details = req.body.details;
             mark._course = res.tpl.course.id;
 
-            console.log('\tMark created');
+            if (res.tpl.logToConsole) console.log('\tMark created');
 
-            return saveCallback(res, next, mark);
+            return saveCallback(res, next, mark, res.tpl.logToConsole);
 
         }
     }

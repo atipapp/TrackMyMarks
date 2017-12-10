@@ -10,7 +10,7 @@ module.exports = function (objectrepository) {
 
 
     return function (req, res, next) {
-        console.log('getAllMarksMW');
+        if (res.tpl.logToConsole) console.log('getAllMarksMW');
 
         markModel.find({
             _course: req.param('id')
@@ -43,7 +43,7 @@ module.exports = function (objectrepository) {
 
             results.sort(function (a, b) {
                 return a.date - b.date;
-            })
+            });
 
             res.tpl.coursemarks = results;
             return next();

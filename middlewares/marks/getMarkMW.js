@@ -8,7 +8,7 @@ var requireOption = require('../common').requireOption;
 module.exports = function (objectrepository) {
     var markModel = requireOption(objectrepository, 'markModel');
     return function (req, res, next) {
-        console.log('getMarkMW');
+        if (res.tpl.logToConsole) console.log('getMarkMW');
 
         markModel.findOne({
             _id: req.param('id')
