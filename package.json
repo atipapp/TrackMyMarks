@@ -1,6 +1,6 @@
 {
   "name": "trackmymarks",
-  "version": "4.0.0",
+  "version": "7.0.0",
   "private": true,
   "description": "Szerver oldali JavaScript targy hazifeladata",
   "main": "index.js",
@@ -16,7 +16,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"start": "node index.js",
+	"test": "mocha",
+	"cover": "istanbul cover node_modules/mocha/bin/_mocha"
   },
   "author": "Attila Papp",
   "license": "MIT"
